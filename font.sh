@@ -105,8 +105,8 @@ echo -e "\n"
 wget -v -P $fontsDir"/" $finalurl
 
 cd $fontsDir"/"
-unzip banglafonts.zip
-rm banglafonts.zip
+tar -zxvf lsaBanglaFonts.tar.gz
+rm lsaBanglaFonts.tar.gz
 
 cd
 
