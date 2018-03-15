@@ -26,6 +26,8 @@ indexof()
 
 
 
+# Print
+echo -e "Choosing Best Mirror!\n"
 
 
 # Get arrays of latency and plain urls.
@@ -35,8 +37,9 @@ pointPlus=()
 for i in ${downloadUrls[@]};do 
   a=$(echo $i | sed 's|http://||g' | sed 's|https://||g' | cut -d '/' -f -1)
   aa=$(ping -c 5 "$a" | tail -1 | awk '{print $4}' | cut -d '/' -f 2)
+  point+=("$aa")
   aaa=${aa%.*}
-  urls+=("$aa,$a")
+  pointPlus+=("$aa,$a")
 done
 
 
@@ -73,8 +76,9 @@ for i in ${pointPlus[@]};do
 done
 
 
-
-
+# Print
+echo -e "Best Mirror!: $finalurl\n"
+sleep 1
 
 if [ $USER = "root" ]; then
   fontsDir="/root/.fonts/lsaBanglaFonts"
@@ -101,7 +105,7 @@ fi
 echo -e "\n"
 echo -e "Downloading the fonts compressed file....\n"
 echo -e "\n"
-
+echo $finalurl
 wget -v -P $fontsDir"/" $finalurl
 
 cd $fontsDir"/"
