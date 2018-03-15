@@ -6,7 +6,7 @@
 #-------------------------------
 
 # Variables
-downloadUrls=("http://www.fahadahammed.com/extras/fonts/lsaBanglaFonts.tar.gz" "https://raw.githubusercontent.com/fahadahammed/linux-bangla-fonts/master/archieve/lsaBanglaFonts.tar.gz")
+downloadUrls=("http://www.fahadahammed.com/extras/fonts/archieve/lsaBanglaFonts.tar.gz" "https://raw.githubusercontent.com/fahadahammed/linux-bangla-fonts/master/archieve/lsaBanglaFonts.tar.gz")
 finalurl="" # it will select lowest latency mirror
 
 
@@ -39,8 +39,7 @@ for i in ${downloadUrls[@]};do
   urls+=("$aa,$a")
 done
 
-point=(45 20)
-pointPlus=(20,www.fahadahammed.com 45,raw.githubusercontent.com)
+
 
 # Calculate Minimum Latency
 #---------------------------
