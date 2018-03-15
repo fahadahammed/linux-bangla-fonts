@@ -5,42 +5,33 @@
 #	Get me by email@fahadahammed.com or obak.krondon@gmail.com if you want to ...
 #-------------------------------
 
+echo "Welcome to http://fahadahammed.com !!!"
+echo "------------------------------------"
+echo "Now starting to download and install all bangla fonts..........."
+echo "------------------------------------"
+
+
 # Variables
 downloadUrls=("http://www.fahadahammed.com/extras/fonts/archieve/lsaBanglaFonts.tar.gz" "https://raw.githubusercontent.com/fahadahammed/linux-bangla-fonts/master/archieve/lsaBanglaFonts.tar.gz")
 finalurl="" # it will select lowest latency mirror
 
 
-# If need Index of Anything
-indexof()
-{
-    local word
-    local item
-    local idx
-
-    word=$1
-    shift
-    item=$(printf '%s\n' "$@" | fgrep -nx "$word")
-    let idx=${item%%:*}-1
-    echo $idx
-}
-
-
-
-# Print
-echo -e "Choosing Best Mirror!\n"
-
 
 # Get arrays of latency and plain urls.
 point=()
 pointPlus=()
+finalu=()
 
 for i in ${downloadUrls[@]};do 
   a=$(echo $i | sed 's|http://||g' | sed 's|https://||g' | cut -d '/' -f -1)
   aa=$(ping -c 5 "$a" | tail -1 | awk '{print $4}' | cut -d '/' -f 2)
-  point+=("$aa")
   aaa=${aa%.*}
-  pointPlus+=("$aa,$a")
+  point+=("$aaa")
+  pointPlus+=("$aaa,$a")
+  finalu+=("$aaa,$i")
 done
+
+
 
 
 
@@ -49,36 +40,28 @@ done
 max=${point[0]}
 min=${point[0]}
 
+echo $min
 # Loop through all elements in the array
-for i in "${point[@]}"
+for i in "${finalu[@]}"
 do
+    a=$(echo $i | cut -d ',' -f 1)
     # Update max if applicable
-    if [[ "$i" -gt "$max" ]]; then
+    if [[ "$a" -gt "$max" ]]; then
         max="$i"
     fi
 
     # Update min if applicable
-    if [[ "$i" -lt "$min" ]]; then
+    if [[ "$a" -lt "$min" ]]; then
         min="$i"
     fi
-
 done
+finalurl=$(echo $min | cut -d ',' -f 2)
 
 
-# Get low latency mirror
-for i in ${pointPlus[@]};do
-  if grep -q $min <<<$i; then
-      a=$(echo $i | cut -d ',' -f 2)
-      if grep -q $a <<<$downloadUrls;then
-        finalurl=$downloadUrls
-      fi
-  fi
-done
 
 
-# Print
-echo -e "Best Mirror!: $finalurl\n"
-sleep 1
+
+
 
 if [ $USER = "root" ]; then
   fontsDir="/root/.fonts/lsaBanglaFonts"
@@ -88,10 +71,7 @@ if [ $USER != "root" ]; then
 fi
 
 
-echo "Welcome to http://fahadahammed.com !!!"
-echo "------------------------------------"
-echo "Now starting to download and install all bangla fonts..........."
-echo "------------------------------------"
+
 
 echo -e "\n"
 
