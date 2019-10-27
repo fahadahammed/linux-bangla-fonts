@@ -10,6 +10,13 @@ It depends on some tools which you have to allow it to install, it will ask.
 - fontconfig
 
 ## Install:
+
+### New Version (lbfi Version 1)
+```bash
+wget --no-check-certificate https://raw.githubusercontent.com/fahadahammed/linux-bangla-fonts/master/dist/lbfi -O lbfi;chmod +x lbfi;./lbfi
+```
+
+### Old Version
 ```
 wget --no-check-certificate https://raw.githubusercontent.com/fahadahammed/linux-bangla-fonts/master/font.sh -O font.sh;chmod +x font.sh;bash font.sh;rm font.sh
 ```
