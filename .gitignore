@@ -6,3 +6,4 @@ build
 *.toc
 *.html
 *.spec
+.venv

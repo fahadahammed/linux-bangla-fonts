@@ -5,9 +5,7 @@
 #
 # ------------------------------
 import os
-import sys
 import tarfile
-import zipfile
 import datetime
 import base64
 import requests
@@ -60,7 +58,7 @@ if __name__ == "__main__":
     print(f"""
     # --------------------------
         Welcome to Linux Bangla Font Installer ! 
-        This project is inititated by Fahad Ahammed.
+        This project is initiated by Fahad Ahammed.
         Current Version: {version}
     # --------------------------
         Installing the fonts.......
