@@ -10,6 +10,16 @@ It depends on some tools which you have to allow it to install, it will ask.
 - fontconfig
 
 ## Install:
+### pypi version
+Make sure you pip3 installed
+
+```bash
+$ pip3 install --upgrade lbfi
+$ lbfi install
+```
+This will install a tool called lbfi in your system and you will be able to use this always update the fonts.
+
+PyPi link: https://pypi.org/project/lbfi/
 
 ### New Version (lbfi Version 1)
 ```bash
