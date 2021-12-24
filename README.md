@@ -15,7 +15,7 @@ Make sure you pip3 installed
 
 ```bash
 $ pip3 install --upgrade lbfi
-$ lbfi install
+$ lbfi --install yes
 ```
 This will install a tool called lbfi in your system and you will be able to use this always update the fonts.
 
